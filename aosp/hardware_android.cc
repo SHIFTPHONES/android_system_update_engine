@@ -257,8 +257,12 @@ int64_t HardwareAndroid::GetBuildTimestamp() const {
 // Returns true if the device runs an userdebug build, and explicitly allows OTA
 // downgrade.
 bool HardwareAndroid::AllowDowngrade() const {
+#if 0
   return GetBoolProperty("ro.ota.allow_downgrade", false) &&
          GetBoolProperty("ro.debuggable", false);
+#else
+  return GetBoolProperty("ro.ota.allow_downgrade", true);
+#endif
 }
 
 bool HardwareAndroid::GetFirstActiveOmahaPingSent() const {
